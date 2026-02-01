@@ -116,21 +116,36 @@
            gif.style.display = 'block';
        });
 
-       noBtn.addEventListener('mouseenter', () => {
-           const containerRect = container.getBoundingClientRect();
-           const btnRect = noBtn.getBoundingClientRect();
-          
-           const maxX = containerRect.width - btnRect.width - 100;
-           const maxY = containerRect.height - btnRect.height - 300;
-          
-           const randomX = Math.random() * maxX;
-           const randomY = Math.random() * maxY;
-          
-           noBtn.style.left = randomX + 'px';
-           noBtn.style.top = randomY + 'px';
-       });
+noBtn.addEventListener('mouseenter', () => {
+    const wrap = document.querySelector('.buttons');
+    const wrapRect = wrap.getBoundingClientRect();
+    const btnRect = noBtn.getBoundingClientRect();
+
+    /* -------------------
+       Horizontal = full width
+    ------------------- */
+    const maxX = wrapRect.width - btnRect.width;
+    const randomX = Math.random() * maxX;
+
+    /* -------------------
+       Vertical behavior
+       mostly UP, tiny DOWN
+       NEVER below Yes
+    ------------------- */
+    const maxUp = 40;     // can go up
+    const maxDown = 6;    // almost no down
+
+    const randomY = (Math.random() * (maxUp + maxDown)) - maxUp;
+
+    noBtn.style.left = randomX + 'px';
+    noBtn.style.top = randomY + 'px';
+});
+
+
+
+        noBtn.addEventListener('touchstart', () => {
+            noBtn.dispatchEvent(new Event('mouseenter'));
+        });
    </script>
 </body>
 </html>
-
-
