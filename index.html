@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Valentine's Day</title>
+   <style>
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+      
+       body {
+           font-family: 'Arial', sans-serif;
+           background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+           min-height: 100vh;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+      
+       .container {
+           text-align: center;
+           background: white;
+           padding: 50px;
+           border-radius: 20px;
+           box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+           /* max-width: 6500px; */
+           width: 90%;
+           height: 70%;
+       }
+      
+       h1 {
+           color: #e74c3c;
+           font-size: 2.5em;
+           margin-bottom: 40px;
+           font-weight: bold;
+       }
+      
+       .buttons {
+           display: flex;
+           gap: 20px;
+           justify-content: center;
+           position: relative;
+           height: 60px;
+           margin-top: 45px;
+           margin-bottom: 45px;
+       }
+      
+       button {
+           padding: 15px 40px;
+           font-size: 1.2em;
+           border: none;
+           border-radius: 10px;
+           cursor: pointer;
+           font-weight: bold;
+           transition: transform 0.2s;
+       }
+      
+       button:hover {
+           transform: scale(1.05);
+       }
+      
+       #yesBtn {
+           background: #2ecc71;
+           color: white;
+           margin-right: 100px;
+
+       }
+      
+       #noBtn {
+           background: #e74c3c;
+           color: white;
+           position: absolute;
+           left: 50%;
+           transform: translateX(50%);
+       }
+      
+       #gif {
+           display: none;
+           max-width: 100%;
+           border-radius: 10px;
+           margin: 20px auto 0;
+       }
+      
+       .hidden {
+           display: none;
+       }
+   </style>
+</head>
+<body>
+   <div class="container">
+       <h1> I knew studying software engineering would pay off one day! 💕</h1>
+       <h2> Will you be my Valentine! For 700 yrs.. 💕</h2>
+
+       <div class="buttons">
+           <button id="yesBtn">Yes! 💖</button>
+           <button id="noBtn">No</button>
+       </div>
+       <h4 id="psMessage"> P.S The "no" button is a bit glitchy sometimes.. ¯\_(ツ)_/¯ </h4>
+
+       <img id="gif" src="https://media.tenor.com/OrxXcqX25KcAAAAj/dudu-bubu-love-gif.gif" alt="Happy celebration">
+   </div>
+
+   <script>
+       const yesBtn = document.getElementById('yesBtn');
+       const noBtn = document.getElementById('noBtn');
+       const gif = document.getElementById('gif');
+       const container = document.querySelector('.container');
+
+       yesBtn.addEventListener('click', () => {
+           document.querySelector('h1').textContent = 'YAAYYY! WIFEY 🎉';
+           document.querySelector('.buttons').classList.add('hidden');
+           document.getElementById('psMessage').classList.add('hidden');
+           gif.style.display = 'block';
+       });
+
+       noBtn.addEventListener('mouseenter', () => {
+           const containerRect = container.getBoundingClientRect();
+           const btnRect = noBtn.getBoundingClientRect();
+          
+           const maxX = containerRect.width - btnRect.width - 100;
+           const maxY = containerRect.height - btnRect.height - 200;
+          
+           const randomX = Math.random() * maxX;
+           const randomY = Math.random() * maxY;
+          
+           noBtn.style.left = randomX + 'px';
+           noBtn.style.top = randomY + 'px';
+       });
+   </script>
+</body>
+</html>
+
+
